@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "SELECT * FROM OrdersPartition",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "rksqldpool03",
+				"poolName": "rksqldpool03"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

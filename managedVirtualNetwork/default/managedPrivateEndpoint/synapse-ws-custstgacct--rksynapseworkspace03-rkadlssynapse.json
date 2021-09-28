@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-custstgacct--rksynapseworkspace03-rkadlssynapse",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/aa62e2f1-b843-4840-bcdf-64081ba7e680/resourceGroups/Day4RG/providers/Microsoft.Storage/storageAccounts/rkadlssynapse",
+		"groupId": "dfs",
+		"fqdns": [
+			"rkadlssynapse.dfs.core.windows.net"
+		]
+	}
+}

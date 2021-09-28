@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-sql--rksynapseworkspace03",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/aa62e2f1-b843-4840-bcdf-64081ba7e680/resourceGroups/Day4RG/providers/Microsoft.Synapse/workspaces/rksynapseworkspace03",
+		"groupId": "sql",
+		"fqdns": [
+			"rksynapseworkspace03.d95e89f3-a421-44fa-a9f6-679f8a0fe7f0.sql.azuresynapse.net"
+		]
+	}
+}

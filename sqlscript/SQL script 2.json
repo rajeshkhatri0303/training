@@ -2,13 +2,13 @@
 	"name": "SQL script 2",
 	"properties": {
 		"content": {
-			"query": "SET NOCOUNT ON  \nDECLARE @i INT     SET @i = 1  \nDECLARE @date DATETIME SET @date = dateadd(mi,@i,'2017-02-05') \nWHILE (@i <= 10)  \nBEGIN    \nINSERT INTO [OrdersPartition] (OrderDate) SELECT @date           \nINSERT INTO [OrdersPartition] (OrderDate) SELECT dateadd(week,1,@date)   \nINSERT INTO [OrdersPartition] (OrderDate) SELECT dateadd(week,2,@date)   \nINSERT INTO [OrdersPartition] (OrderDate) SELECT dateadd(week,3,@date)   \nINSERT INTO [OrdersPartition] (OrderDate) SELECT dateadd(week,4,@date)   \nINSERT INTO [OrdersPartition] (OrderDate) SELECT dateadd(week,5,@date)   \nSET @i = @i+1;  \nEND   \nSELECT COUNT(*) FROM OrdersPartition",
+			"query": "CREATE DATABASE SCOPED CREDENTIAL sqlondemand1\n\nWITH IDENTITY='SHARED ACCESS SIGNATURE',  \n\nSECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'\n\nGO\n\nCREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (\n\n    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',\n\n    CREDENTIAL = sqlondemand1\n\n);\n\n\nSELECT TOP 10 *\nFROM OPENROWSET\n  (\n      BULK 'csv/population/*.csv',\n      DATA_SOURCE = 'SqlOnDemandDemo',\n      FORMAT = 'CSV', PARSER_VERSION = '2.0'\n  )\nWITH\n  (\n      country_code VARCHAR (5)\n    , country_name VARCHAR (100)\n    , year smallint\n    , population bigint\n  ) AS r\nWHERE\n  country_name = 'Luxembourg' AND year = 2017",
 			"metadata": {
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "rksqldpool03",
-				"poolName": "rksqldpool03"
+				"databaseName": "DataExplorationDB",
+				"poolName": "Built-in"
 			},
 			"resultLimit": 5000
 		},
